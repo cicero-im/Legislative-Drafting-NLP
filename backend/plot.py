@@ -3,7 +3,7 @@ import ast
 
 
 file2 = open("performance.txt", "r")
-scores = ast.literal_eval(file2.readline().strip())
+scores = ast.literal_eval(file2.readline(5_000_000).strip())
 
 
 # scores1 = [70, 40, 30, 40, 12]
