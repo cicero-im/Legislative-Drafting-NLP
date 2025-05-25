@@ -1,9 +1,7 @@
 import matplotlib.pyplot as plt
 import ast
-
-
-file2 = open("performance.txt", "r")
-scores = ast.literal_eval(file2.readline().strip())
+with open("performance.txt", "r") as file2:
+    scores = ast.literal_eval(file2.readline().strip())
 
 
 # scores1 = [70, 40, 30, 40, 12]
