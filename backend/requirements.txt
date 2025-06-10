@@ -1,6 +1,6 @@
 Flask==3.0.1
 Flask-SQLAlchemy==3.0.0
-requests==2.31.0
+requests==2.32.4
 pypdf==4.0.1
 libmagic==1.0
 bs4==0.0.2
@@ -11,7 +11,7 @@ python-docx
 pyodbc
 pytest
 requests-mock
-langchain==0.1.14
+langchain==0.2.5
 langchain-openai
 langchain-community
 langchain
