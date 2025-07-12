@@ -5,6 +5,7 @@ import os
 import io
 from bs4 import BeautifulSoup
 import csv
+from security import safe_requests
 
 my_key = "480c76cff050a40771e1190b3cab219d"
 
@@ -45,7 +46,7 @@ def getTextOfExample():
 def getTextFromID(bill_ID):
     file_name = (str(bill_ID) + '_decoded')
     api_url = "https://api.legiscan.com/?key=" + my_key + "&op=getBillText&id=" + str(bill_ID)
-    response = requests.get(api_url)
+    response = safe_requests.get(api_url)
     data = response.json()
     response_body = (data['text']['doc'])
     print("Start")
@@ -81,7 +82,7 @@ def getIDsForState(juristiction):
     ids_list = []
     juristiction_code = convertToCode(juristiction)
     api_url = "https://api.legiscan.com/?key=" + my_key + "&op=getMasterList&state=" + juristiction_code
-    response = requests.get(api_url)
+    response = safe_requests.get(api_url)
     data = response.json()
     print(response)
     try:
@@ -152,7 +153,7 @@ def getSearch(query, state, documentType, effectiveDate):
         # Construct the API URL
         api_url = f"https://api.legiscan.com/?key={my_key}&op=getSearch&state={state}&query={query}"
 
-        response = requests.get(api_url)
+        response = safe_requests.get(api_url)
 
         # Check if the request was successful
         if response.status_code == 200:
