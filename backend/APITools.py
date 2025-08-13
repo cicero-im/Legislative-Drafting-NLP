@@ -23,7 +23,7 @@ codes_list.pop(0)
 
 def getTextOfExample():
         api_url = "https://api.legiscan.com/?key=480c76cff050a40771e1190b3cab219d&op=getBillText&id=2915412"
-        response = requests.get(api_url)
+        response = requests.get(api_url, timeout=60)
         data = response.json()
         print(response)
         response_body = (data['text']['doc'])
@@ -45,7 +45,7 @@ def getTextOfExample():
 def getTextFromID(bill_ID):
     file_name = (str(bill_ID) + '_decoded')
     api_url = "https://api.legiscan.com/?key=" + my_key + "&op=getBillText&id=" + str(bill_ID)
-    response = requests.get(api_url)
+    response = requests.get(api_url, timeout=60)
     data = response.json()
     response_body = (data['text']['doc'])
     print("Start")
@@ -81,7 +81,7 @@ def getIDsForState(juristiction):
     ids_list = []
     juristiction_code = convertToCode(juristiction)
     api_url = "https://api.legiscan.com/?key=" + my_key + "&op=getMasterList&state=" + juristiction_code
-    response = requests.get(api_url)
+    response = requests.get(api_url, timeout=60)
     data = response.json()
     print(response)
     try:
@@ -152,7 +152,7 @@ def getSearch(query, state, documentType, effectiveDate):
         # Construct the API URL
         api_url = f"https://api.legiscan.com/?key={my_key}&op=getSearch&state={state}&query={query}"
 
-        response = requests.get(api_url)
+        response = requests.get(api_url, timeout=60)
 
         # Check if the request was successful
         if response.status_code == 200:
